@@ -11,9 +11,9 @@ app.use(bodyParser.json());
 
 
 cloudinary.config({
-    cloud_name: "sealuse-creatives",
-    api_key: "899728326346178",
-    api_secret: "aHFs9bZB9HhsXs7Wnm_enko475M",
+    cloud_name: "YOUR_CLOUD_NAME",
+    api_key: "API_KEY",
+    api_secret: "API_SECRET",
 });
 
 

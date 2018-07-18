@@ -18,14 +18,21 @@ cloudinary.config({
 
 
 app.get('/cloudinary/optimized', (req, res) => {
-    res.send(cloudinary.video("bunny_new", {
-        autoplay: true, controls: true, loop: true
+    res.send(cloudinary.video("bunny", {
+        autoplay: true,
+        controls: true,
+        loop: true,
+        quality: 50,
+        bit_rate: "300k",
+        width: 0.5,
+        crop: "scale",
+        video_codec: "auto"
     }));
 })
 
-app.get("/cloudinary/non-optimzed", (req, res) => {
-    res.send(cloudinary.video("bunny_new", {
-        autoplay: true, controls: true, loop: true
+app.get("/cloudinary/non-optimized", (req, res) => {
+    res.send(cloudinary.video("bunny", {
+        autoplay: true, controls: true
     }));
 })
 

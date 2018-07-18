@@ -75,10 +75,3 @@ export default {
 };
 </script>
 
-<style>
-video {
-  width: 100%;
-  height: auto;
-}
-</style>
-

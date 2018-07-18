@@ -9,28 +9,26 @@
         <div class="col-md-6">
 
           <div class="form-group">
-             <button @click="getCloudinaryVideo()"> Fetch Cloudinary Video </button>
+             <button @click="getOptimizedVideo()"> Fetch Optimized Video </button>
 
-             <button @click="clearCloudinaryVideo()"> Clear Video </button>
+             <button @click="clearOptimizedVideo()"> Clear Video </button>
           </div>
 
-          <div v-if="cloudinaryVideo">
-            <div id="video" v-html="cloudinaryVideo">
+          <div v-if="optimized">
+            <div class="video" v-html="optimized">
             </div>
           </div>
         </div>
 
         <div class="col-md-6">
            <div class="form-group">
-             <button @click="getOtherVideo()"> Fetch Other Video </button>
+             <button @click="getNonOptimizedVideo()"> Fetch Other Video </button>
 
-             <button @click="clearOtherVideo()"> Clear Other Video </button>
+             <button @click="clearNonOptimizedVideo()"> Clear Video </button>
           </div>
 
-          <div v-if="otherVideo">
-            <video width="640" height="480" autoplay controls loop>
-              <source :src="otherVideo" type="video/mp4">
-            </video>
+          <div v-if="nonOptimized">
+            <div class="video" v-html="nonOptimized"></div>
           </div>
         </div>
          
@@ -44,33 +42,34 @@ export default {
   name: "Home",
   data() {
     return {
-      text: "This is it",
-      cloudinaryVideo: null,
-      otherVideo: false,
+      optimized: null,
+      nonOptimized: null,
       loading: false
     };
   },
   methods: {
-    getCloudinaryVideo() {
+    getOptimizedVideo() {
       this.loading = true;
-      axios.get("http://localhost:3000/cloudinary/videos").then(data => {
-        this.cloudinaryVideo = data.data;
+      axios.get("http://localhost:3000/cloudinary/optimized").then(data => {
+        this.optimized = data.data;
         this.loading = false;
       });
     },
 
-    clearCloudinaryVideo() {
-      this.cloudinaryVideo = "";
+    clearOptimizedVideo() {
+      this.optimized = "";
     },
 
-    getOtherVideo() {
+    getNonOptimizedVideo() {
       this.loading = true;
-      this.otherVideo =
-        "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4";
+      axios.get("http://localhost:3000/cloudinary/non-optimized").then(data => {
+        this.nonOptimized = data.data;
+        this.loading = false;
+      });
     },
 
-    clearOtherVideo() {
-      this.otherVideo = false;
+    clearNonOptimizedVideo() {
+      this.nonOptimized = "";
     }
   }
 };

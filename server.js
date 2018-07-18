@@ -18,13 +18,13 @@ cloudinary.config({
 
 
 app.get('/cloudinary/optimized', (req, res) => {
-    res.send(cloudinary.video("bunny", {
+    res.send(cloudinary.video("bunny_new", {
         autoplay: true, controls: true, loop: true
     }));
 })
 
 app.get("/cloudinary/non-optimzed", (req, res) => {
-    res.send(cloudinary.video("bunny", {
+    res.send(cloudinary.video("bunny_new", {
         autoplay: true, controls: true, loop: true
     }));
 })

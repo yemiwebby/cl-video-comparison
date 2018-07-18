@@ -11,20 +11,22 @@ app.use(bodyParser.json());
 
 
 cloudinary.config({
-    cloud_name: "YOUR_CLOUD_NAME",
-    api_key: "API_KEY",
-    api_secret: "API_SECRET",
+    cloud_name: "sealuse-creatives",
+    api_key: "899728326346178",
+    api_secret: "aHFs9bZB9HhsXs7Wnm_enko475M",
 });
 
 
-app.get('/cloudinary/videos', (req, res) => {
-    res.send(cloudinary.video("optimized-type", {
+app.get('/cloudinary/optimized', (req, res) => {
+    res.send(cloudinary.video("bunny", {
         autoplay: true, controls: true, loop: true
     }));
 })
 
-app.get("/other/videos", (req, res) => {
-    res.send(axios.get("https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"));
+app.get("/cloudinary/non-optimzed", (req, res) => {
+    res.send(cloudinary.video("bunny", {
+        autoplay: true, controls: true, loop: true
+    }));
 })
 
 app.listen(3000);

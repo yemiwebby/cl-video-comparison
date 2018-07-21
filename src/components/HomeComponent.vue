@@ -7,28 +7,18 @@
           </div>
 
         <div class="col-md-6">
-
-          <div class="form-group">
-             <button @click="getOptimizedVideo()"> Fetch Optimized Video </button>
-
-             <button @click="clearOptimizedVideo()"> Clear Video </button>
-          </div>
-
-          <div v-if="optimized">
-            <div class="video" v-html="optimized">
-            </div>
+          <div>
+            <video controls autoplay>
+              <source src="https://res.cloudinary.com/sealuse-creatives/video/upload/w_350,h_350,c_fit/q_70/br_300k/e_volume:50/bunny.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
 
         <div class="col-md-6">
-           <div class="form-group">
-             <button @click="getNonOptimizedVideo()"> Fetch Other Video </button>
-
-             <button @click="clearNonOptimizedVideo()"> Clear Video </button>
-          </div>
-
-          <div v-if="nonOptimized">
-            <div class="video" v-html="nonOptimized"></div>
+          <div>
+            <video controls autoplay>
+              <source src="https://res.cloudinary.com/sealuse-creatives/video/upload/bunny.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
          
@@ -50,10 +40,8 @@ export default {
   methods: {
     getOptimizedVideo() {
       this.loading = true;
-      axios.get("http://localhost:3000/cloudinary/optimized").then(data => {
-        this.optimized = data.data;
-        this.loading = false;
-      });
+      this.optimized =
+        "https://res.cloudinary.com/sealuse-creatives/video/upload/v1531916416/bunny.mp4";
     },
 
     clearOptimizedVideo() {
